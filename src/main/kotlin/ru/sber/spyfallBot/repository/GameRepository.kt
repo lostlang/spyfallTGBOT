@@ -1,6 +1,6 @@
-package repository
+package spyfallBot.repository
 
-import entity.Game
+import spyfallBot.entity.Game
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface GameRepository : JpaRepository<Game, Long>

@@ -1,6 +1,6 @@
-package repository
+package spyfallBot.repository
 
-import entity.Player
+import spyfallBot.entity.Player
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface PlayerRepository: JpaRepository<Player, Long>

@@ -1,4 +1,4 @@
-package entity
+package spyfallBot.entity
 
 import javax.persistence.*
 

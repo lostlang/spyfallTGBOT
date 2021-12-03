@@ -8,7 +8,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- lookup parent from spyfallBot.repository -->
     </parent>
 
     <groupId>ru.sber.spyfallBot</groupId>
@@ -64,7 +64,7 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main/ru/sber/spyfallBot/kotlin</sourceDirectory>
+        <sourceDirectory>src/main/kotlin/sber/spyfallBot/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/ru/sber/spyfallBot/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
