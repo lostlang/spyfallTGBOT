@@ -1,8 +1,8 @@
-package ru.sber.spyfallBot.comand
+package ru.sber.spyfallBot.command
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationEventPublisher
-import org.telegram.telegrambots.meta.api.objects.commands.BotCommand
+import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand
 import ru.sber.spyfallBot.event.CommandEvent
 
 abstract class AbstractCommand (
