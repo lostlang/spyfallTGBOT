@@ -1,18 +1,40 @@
 package ru.sber.spyfallBot.entity
 
+import ru.sber.spyfallBot.enums.Status
 import javax.persistence.*
 
 @Entity
-@Table(name = "players")
-data class Player (
+@Table(name = "PLAYERS")
+data class Player(
     @Id
-    val id: Long? = null,
-
-    @Column(name = "telegram_id")
-    val telegramIg: Long? = null,
-
-    val playerAlias: String? = null,
+    val id: Long,
+    val name: String,
+    var pseudonym: String = name,
+    var inAction: Boolean = false,
+    var numberOfPoints: Int = 0,
+    @Enumerated(value = EnumType.STRING)
+    var status: Status = Status.REST,
+    var master: Boolean = false,
 
     @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     var game: Game? = null
-)
+) {
+
+    fun addGame(game: Game) {
+        this.game = game
+        this.inAction = true
+        this.numberOfPoints = 0
+        this.status = Status.CIVIC
+        this.master = true
+        game.players.add(this)
+    }
+
+    fun joinGame(game: Game) {
+        this.game = game
+        this.inAction = true
+        this.numberOfPoints = 0
+        this.status = Status.CIVIC
+        this.master = false
+        game.players.add(this)
+    }
+}
