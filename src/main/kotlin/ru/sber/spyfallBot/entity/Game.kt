@@ -3,16 +3,15 @@ package ru.sber.spyfallBot.entity
 import javax.persistence.*
 
 @Entity
-@Table(name = "games")
-data class Game (
-    @Id
-    val id: Long? = null,
-
+@Table(name = "GAMES")
+data class Game(
+    var previousPlayer: Long,
+    var isActive: Boolean = false,
     var location: String? = null,
-
-    @OneToOne
-    val spy: Player? = null,
-
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "game")
     val players: MutableList<Player> = mutableListOf()
-)
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long = 0
+}
