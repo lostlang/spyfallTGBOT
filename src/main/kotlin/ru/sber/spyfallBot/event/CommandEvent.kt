@@ -1,6 +1,6 @@
 package ru.sber.spyfallBot.event
 
-import ru.sber.spyfallBot.comand.CommandList
+import ru.sber.spyfallBot.command.CommandList
 
 // Не знаю заче оно надо, но вроде недо
 

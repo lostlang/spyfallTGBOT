@@ -1,4 +1,4 @@
-package ru.sber.spyfallBot.comand
+package ru.sber.spyfallBot.command
 
 enum class CommandList(val command: String, val description: String) {
     START ("start", "Начало работы с ботом"),
