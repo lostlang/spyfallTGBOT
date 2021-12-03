@@ -1,6 +1,6 @@
-package spyfallBot.repository
+package ru.sber.spyfallBot.repository
 
-import spyfallBot.entity.Player
+import ru.sber.spyfallBot.entity.Player
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface PlayerRepository: JpaRepository<Player, Long>
