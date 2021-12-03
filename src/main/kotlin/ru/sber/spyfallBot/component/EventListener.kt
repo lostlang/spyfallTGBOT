@@ -1,6 +1,5 @@
 package ru.sber.spyfallBot.component
 
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Lazy
 import org.springframework.context.event.EventListener
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import ru.sber.spyfallBot.command.CommandList
 import ru.sber.spyfallBot.event.CommandEvent
-import ru.sber.spyfallBot.logic.MessageBuilder
+import ru.sber.spyfallBot.logic.*
 
 @Component
 class EventListener(
@@ -17,11 +16,11 @@ class EventListener(
     inner class CommandEventListener {
         @EventListener
         fun onApplicationEvent(event: CommandEvent) {
-            var sendMessage: SendMessage? = null
+            var sendMessages: MutableList<SendMessage>? = null
 
             when (event.command) {
                 CommandList.START -> {
-                    sendMessage = MessageBuilder().simpleTextMessage(event.chatId, "run")
+                    sendMessages = simpleTextMessage(event.chatId, event.arguments)
                 }
                 CommandList.RUN -> {
                     println("run")
@@ -34,7 +33,9 @@ class EventListener(
                 }
             }
 
-            bot.execute(sendMessage)
+            sendMessages?.forEach { sendMessage ->
+                bot.execute(sendMessage)
+            }
         }
     }
 
