@@ -12,5 +12,6 @@ class StartBotCommand: AbstractCommand(CommandList.START) {
     override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
         val userFullName = "${user.firstName} ${user.lastName}"
         sendEvent(chat.id, arrayOf(userFullName))
+        print(userFullName)
     }
 }
