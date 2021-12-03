@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.objects.Chat
 import org.telegram.telegrambots.meta.api.objects.User
 import org.telegram.telegrambots.meta.bots.AbsSender
-import ru.sber.spyfallBot.comand.AbstractCommand
-import ru.sber.spyfallBot.comand.CommandList
+import ru.sber.spyfallBot.command.AbstractCommand
+import ru.sber.spyfallBot.command.CommandList
 
 @Component
 class StartBotCommand: AbstractCommand(CommandList.START) {

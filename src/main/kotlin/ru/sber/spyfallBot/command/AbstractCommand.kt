@@ -1,4 +1,4 @@
-package ru.sber.spyfallBot.comand
+package ru.sber.spyfallBot.command
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationEventPublisher
