@@ -12,7 +12,7 @@ data class Player(
     var pseudonym: String = name,
     var inAction: Boolean = false,
     var numberOfPoints: Int = 0,
-    //@Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     var status: Status = Status.REST,
     var master: Boolean = false,
 
