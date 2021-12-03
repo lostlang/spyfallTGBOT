@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import ru.sber.spyfallBot.command.CommandList
 import ru.sber.spyfallBot.event.CommandEvent
-import ru.sber.spyfallBot.services.MessageService
+import ru.sber.spyfallBot.logic.MessageBuilder
 
 @Component
 class EventListener(
     private val bot: Bot,
-    private val messageService: MessageService
+    private val messageBuilder: MessageBuilder
 ) {
-
     inner class CommandEventListener {
         @EventListener
         fun onApplicationEvent(event: CommandEvent) {
@@ -22,7 +21,7 @@ class EventListener(
 
             when (event.command) {
                 CommandList.START -> {
-                    sendMessage = messageService.simpleTextMessage(event.chatId, "run")
+                    sendMessage = messageBuilder.simpleTextMessage(event.chatId, "run")
                 }
                 CommandList.RUN -> {
                     println("run")
