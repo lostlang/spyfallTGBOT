@@ -2,12 +2,16 @@ package ru.sber.spyfallBot.logic
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 
-class MessageBuilder (
-) {
-    fun simpleTextMessage(chatId: Long, text: String): SendMessage {
-        return  SendMessage.builder()
+fun simpleTextMessage(chatId: Long, text: Array<out String>): MutableList<SendMessage> {
+    val messages: MutableList<SendMessage> = mutableListOf()
+    text.forEach { message ->
+        messages.add(
+            SendMessage.builder()
                 .chatId(chatId.toString())
-                .text(text)
+                .text(message)
                 .build()
+        )
     }
+
+    return messages
 }
