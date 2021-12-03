@@ -1,5 +1,6 @@
 package ru.sber.spyfallBot.component
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Lazy
 import org.springframework.context.event.EventListener
@@ -11,8 +12,7 @@ import ru.sber.spyfallBot.logic.MessageBuilder
 
 @Component
 class EventListener(
-    private val bot: Bot,
-    private val messageBuilder: MessageBuilder
+    private val bot: Bot
 ) {
     inner class CommandEventListener {
         @EventListener
@@ -21,7 +21,7 @@ class EventListener(
 
             when (event.command) {
                 CommandList.START -> {
-                    sendMessage = messageBuilder.simpleTextMessage(event.chatId, "run")
+                    sendMessage = MessageBuilder().simpleTextMessage(event.chatId, "run")
                 }
                 CommandList.RUN -> {
                     println("run")
