@@ -24,7 +24,7 @@ class Bot (
                 SendMessage
                 .builder()
                 .chatId(update.message.chatId.toString())
-                .text("${update.message.chatId}, ${botProperties.username}: ${update.message.text}")
+                .text("${update.message.chatId}, ${botUsername}: ${update.message.text}")
                 .build()
             )
         } catch (e: TelegramApiException) {
