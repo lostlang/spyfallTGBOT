@@ -1,5 +1,6 @@
 package ru.sber.spyfallBot.entity
 
+import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -9,6 +10,10 @@ data class Game (
     val id: Long? = null,
 
     var location: String? = null,
+
+    val timeStart: LocalDateTime = LocalDateTime.now(),
+
+    val timeForPlay: Long? = null,
 
     @OneToOne
     val spy: Player? = null,
