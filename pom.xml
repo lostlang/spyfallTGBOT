@@ -65,7 +65,7 @@
 
     <build>
         <sourceDirectory>src/main/kotlin/sber/spyfallBot/kotlin</sourceDirectory>
-        <testSourceDirectory>src/test/ru/sber/spyfallBot/kotlin</testSourceDirectory>
+        <testSourceDirectory>src/test/kotlin/sber/spyfallBot/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
