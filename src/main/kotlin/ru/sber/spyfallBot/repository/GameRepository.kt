@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface GameRepository : JpaRepository<Game, Long> {
     /*
-    fun GetListActiveGames() {
+    fun getListActiveGames() {
 
     }
 
