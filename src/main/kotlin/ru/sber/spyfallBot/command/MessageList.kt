@@ -4,5 +4,6 @@ package ru.sber.spyfallBot.command
 // И string.replace() для самой вставки
 
 enum class MessageList (val text: String) {
+    UNDEFINE("Простите, но '#1' - не известная команда для меня"),
     START("Приветсвенное сообщение"),
 }
