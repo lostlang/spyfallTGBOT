@@ -7,5 +7,5 @@ import ru.sber.spyfallBot.command.CommandInfo
 data class CommandEvent (
     val chatId: Long,
     val command: CommandInfo,
-    val arguments: Array<out String>
+    val arguments: List<out String>
 )
