@@ -7,6 +7,7 @@ import javax.persistence.*
 @Table(name = "games")
 data class Game (
     @Id
+    @GeneratedValue
     val id: Long? = null,
 
     @Column(name = "time_start")

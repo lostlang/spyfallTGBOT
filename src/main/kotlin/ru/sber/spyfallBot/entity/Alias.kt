@@ -6,6 +6,7 @@ import javax.persistence.*
 @Table(name = "aliases")
 data class Alias (
     @Id
+    @GeneratedValue
     val id: Long? = null,
 
     val name: String? = null

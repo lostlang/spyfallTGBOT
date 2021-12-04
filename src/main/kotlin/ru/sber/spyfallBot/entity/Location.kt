@@ -6,6 +6,7 @@ import javax.persistence.*
 @Table(name = "games")
 data class Location (
     @Id
+    @GeneratedValue
     val id: Long? = null,
 
     val name: String? = null,

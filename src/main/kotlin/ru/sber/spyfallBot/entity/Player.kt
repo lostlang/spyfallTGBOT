@@ -6,10 +6,11 @@ import javax.persistence.*
 @Table(name = "players")
 data class Player (
     @Id
+    @GeneratedValue
     val id: Long? = null,
 
     @Column(name = "telegram_id")
-    val telegramIg: Long? = null,
+    val telegramId: Long? = null,
 
     @ManyToOne(fetch = FetchType.EAGER)
     var playerAlias: Alias? = null,
