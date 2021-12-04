@@ -1,14 +1,11 @@
 package ru.sber.spyfallBot.repository
 
-import ru.sber.spyfallBot.entity.Player
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
+import ru.sber.spyfallBot.entity.Player
+import java.util.*
 
 @Repository
 interface PlayerRepository: JpaRepository<Player, Long> {
-    /*
-    fun searchPlayer() {
-
-    }
-     */
+    fun findByTelegramId(id: Long): Optional<Player>
 }
