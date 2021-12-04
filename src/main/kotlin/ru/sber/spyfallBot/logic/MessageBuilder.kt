@@ -18,11 +18,13 @@ fun simpleTextMessage(chatId: Long, text: Array<out String>): MutableList<SendMe
 
 fun formatMessage(text: String, values:  Array<String>): String {
     var outText = text
+
     for (i in 1..values.size) {
-        outText = text.replace(
+        outText = outText.replace(
             "#$i",
-            values[i]
+            values[i - 1]
         )
     }
+
     return outText
 }
