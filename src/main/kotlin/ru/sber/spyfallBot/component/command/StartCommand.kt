@@ -9,7 +9,7 @@ import ru.sber.spyfallBot.command.AbstractCommand
 import ru.sber.spyfallBot.command.MessageList
 
 @Component
-class StartBotCommand: AbstractCommand(CommandList.START) {
+class StartCommand: AbstractCommand(CommandList.START) {
     override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
         val outText: String = MessageList.START.text
         sendEvent(chat.id, arrayOf(outText))
