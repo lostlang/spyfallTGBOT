@@ -21,16 +21,12 @@ class EventListener(
         fun onApplicationEvent(event: CommandEvent) {
             val sendMessages: MutableList<SendMessage> = simpleTextMessage(event.chatId, event.arguments)
 
-            var markup = InlineKeyboardMarkup()
-
             when (event.command) {
-                CommandInfo.START -> markup.keyboard = CommandButton.START.buttons
+                CommandInfo.START -> addKeyboardInline(sendMessages, CommandButton.START.buttons)
+                else -> {}
             }
 
             sendMessages.forEach { sendMessage ->
-                if (markup.keyboard.isNotEmpty()){
-                    sendMessage.replyMarkup = markup
-                }
                 bot.execute(sendMessage)
             }
         }
