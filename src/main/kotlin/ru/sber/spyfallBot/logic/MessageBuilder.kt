@@ -16,7 +16,7 @@ fun simpleTextMessage(chatId: Long, text: Array<out String>): MutableList<SendMe
     return messages
 }
 
-fun formatMessage(text: String, values:  Array<String>): String {
+fun formatMessage(text: String, values: Array<String>): String {
     var outText = text
 
     for (i in 1..values.size) {

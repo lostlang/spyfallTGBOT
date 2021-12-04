@@ -7,7 +7,7 @@ import ru.sber.spyfallBot.event.CommandEvent
 import ru.sber.spyfallBot.repository.*
 
 abstract class AbstractCommand (
-    private val command: CommandList
+    private val command: CommandInfo
 ): BotCommand(command.command, command.description) {
 
     @Autowired

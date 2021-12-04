@@ -4,18 +4,18 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.objects.Chat
 import org.telegram.telegrambots.meta.api.objects.User
 import org.telegram.telegrambots.meta.bots.AbsSender
-import ru.sber.spyfallBot.command.CommandList
+import ru.sber.spyfallBot.command.CommandInfo
 import ru.sber.spyfallBot.command.AbstractCommand
-import ru.sber.spyfallBot.command.MessageList
+import ru.sber.spyfallBot.command.CommandMessage
 import ru.sber.spyfallBot.entity.Player
 import ru.sber.spyfallBot.logic.*
 
 @Component
-class StartCommand: AbstractCommand(CommandList.START) {
+class StartCommand: AbstractCommand(CommandInfo.START) {
     override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
         val outText: String
         if (!playerRepository.findByTelegramId(chat.id).isPresent) {
-            outText = formatMessage(MessageList.START.text,
+            outText = formatMessage(CommandMessage.START.text,
                 arrayOf(user.firstName, user.lastName)
             )
 
@@ -23,7 +23,7 @@ class StartCommand: AbstractCommand(CommandList.START) {
                 Player(telegramId = user.id)
             )
         } else {
-            outText = MessageList.START_ALREADY_AVAILABLE.text
+            outText = CommandMessage.START_ALREADY_AVAILABLE.text
         }
 
         sendEvent(chat.id, arrayOf(outText))

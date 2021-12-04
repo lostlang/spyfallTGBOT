@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.IBotCommand
 import org.telegram.telegrambots.meta.api.objects.Update
-import ru.sber.spyfallBot.command.MessageList
+import ru.sber.spyfallBot.command.CommandMessage
 import ru.sber.spyfallBot.logic.*
 import javax.annotation.PostConstruct
 
@@ -30,7 +30,7 @@ class Bot (
 
         registerDefaultAction { absSender, message ->
             simpleTextMessage(message.chatId,
-                arrayOf(formatMessage(MessageList.UNDEFINE.text, arrayOf(message.text)))
+                arrayOf(formatMessage(CommandMessage.UNDEFINE.text, arrayOf(message.text)))
             ).forEach {
                 absSender.execute(
                     it
