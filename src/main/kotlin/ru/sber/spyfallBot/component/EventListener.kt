@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton
+import ru.sber.spyfallBot.command.CommandButton
+import ru.sber.spyfallBot.command.CommandInfo
 import ru.sber.spyfallBot.event.CommandEvent
 import ru.sber.spyfallBot.logic.*
 
@@ -19,24 +21,16 @@ class EventListener(
         fun onApplicationEvent(event: CommandEvent) {
             val sendMessages: MutableList<SendMessage> = simpleTextMessage(event.chatId, event.arguments)
 
+            var markup = InlineKeyboardMarkup()
+
+            when (event.command) {
+                CommandInfo.START -> markup.keyboard = CommandButton.START.buttons
+            }
+
             sendMessages.forEach { sendMessage ->
-                var markup = InlineKeyboardMarkup()
-                var buttons: MutableList<MutableList<InlineKeyboardButton>> = mutableListOf()
-
-                buttons.add(mutableListOf(
-                    InlineKeyboardButton()
-                        .also { it.text = "тест дата" }
-                        .also { it.callbackData = it.text },
-                    InlineKeyboardButton()
-                        .also { it.text = "тест дата 2" }
-                        .also { it.callbackData = it.text })
-                )
-                buttons.add(mutableListOf(InlineKeyboardButton()
-                    .also { it.text = "тест дата 3" }
-                    .also { it.callbackData = it.text }))
-
-                markup.keyboard = buttons
-                sendMessage.replyMarkup = markup
+                if (markup.keyboard.isNotEmpty()){
+                    sendMessage.replyMarkup = markup
+                }
                 bot.execute(sendMessage)
             }
         }
