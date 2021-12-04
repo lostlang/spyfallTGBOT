@@ -11,9 +11,9 @@ data class Player (
     @Column(name = "telegram_id")
     val telegramIg: Long? = null,
 
-    @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     var playerAlias: Alias? = null,
 
-    @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     var playerGame: Game? = null
 )

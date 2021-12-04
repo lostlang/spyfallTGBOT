@@ -8,5 +8,8 @@ data class Location (
     @Id
     val id: Long? = null,
 
-    val name: String? = null
+    val name: String? = null,
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    val game: MutableList<Game> = mutableListOf()
 )
