@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface PlayerRepository: JpaRepository<Player, Long> {
     /*
-    fun SearchPlayer() {
+    fun searchPlayer() {
 
     }
      */

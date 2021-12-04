@@ -7,7 +7,7 @@ import ru.sber.spyfallBot.entity.Location
 @Repository
 interface LocationRepository: JpaRepository<Location, Long> {
     /*
-    fun RandomPool() {
+    fun randomPool() {
 
     }
      */

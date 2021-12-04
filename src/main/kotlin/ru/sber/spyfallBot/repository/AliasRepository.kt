@@ -7,7 +7,7 @@ import ru.sber.spyfallBot.entity.Alias
 @Repository
 interface AliasRepository: JpaRepository<Alias, Long> {
     /*
-    fun Random() {
+    fun random() {
 
     }
      */
