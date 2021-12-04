@@ -12,20 +12,36 @@ import ru.sber.spyfallBot.logic.*
 
 @Component
 class StartCommand: AbstractCommand(CommandInfo.START) {
-    override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
+
+    override fun getMessage(args: List<String>): String {
+        val userId = args!![0].toLong()
+        val userFirstName = args[1]
+        val userLastName = args[2]
+
         val outText: String
-        if (!playerRepository.findByTelegramId(chat.id).isPresent) {
+
+        if (!playerRepository.findByTelegramId(userId).isPresent) {
             outText = formatMessage(CommandMessage.START.text,
-                arrayOf(user.firstName, user.lastName)
+                arrayOf(userFirstName, userLastName)
             )
 
             playerRepository.save(
-                Player(telegramId = user.id)
+                Player(telegramId = userId)
             )
         } else {
             outText = CommandMessage.START_ALREADY_AVAILABLE.text
         }
 
-        sendEvent(chat.id, arrayOf(outText))
+        return outText
+    }
+
+    override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
+         sendEvent(chat.id, listOf(
+             getMessage(
+                 listOf(user.id.toString(),
+                     user.firstName,
+                     user.lastName)
+             ))
+         )
     }
 }
