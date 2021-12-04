@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Lazy
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
-import ru.sber.spyfallBot.command.CommandList
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton
 import ru.sber.spyfallBot.event.CommandEvent
 import ru.sber.spyfallBot.logic.*
 
@@ -16,24 +17,26 @@ class EventListener(
     inner class CommandEventListener {
         @EventListener
         fun onApplicationEvent(event: CommandEvent) {
-            var sendMessages: MutableList<SendMessage>? = null
+            val sendMessages: MutableList<SendMessage> = simpleTextMessage(event.chatId, event.arguments)
 
-            when (event.command) {
-                CommandList.START -> {
-                    sendMessages = simpleTextMessage(event.chatId, event.arguments)
-                }
-                CommandList.RUN -> {
-                    println("run")
-                }
-                CommandList.JOIN -> {
-                    println("join")
-                }
-                CommandList.LEAVE -> {
-                    println("leave")
-                }
-            }
+            sendMessages.forEach { sendMessage ->
+                var markup = InlineKeyboardMarkup()
+                var buttons: MutableList<MutableList<InlineKeyboardButton>> = mutableListOf()
 
-            sendMessages?.forEach { sendMessage ->
+                buttons.add(mutableListOf(
+                    InlineKeyboardButton()
+                        .also { it.text = "тест дата" }
+                        .also { it.callbackData = it.text },
+                    InlineKeyboardButton()
+                        .also { it.text = "тест дата 2" }
+                        .also { it.callbackData = it.text })
+                )
+                buttons.add(mutableListOf(InlineKeyboardButton()
+                    .also { it.text = "тест дата 3" }
+                    .also { it.callbackData = it.text }))
+
+                markup.keyboard = buttons
+                sendMessage.replyMarkup = markup
                 bot.execute(sendMessage)
             }
         }
