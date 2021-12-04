@@ -1,5 +1,6 @@
 package ru.sber.spyfallBot.command
 
+
 enum class CommandInfo(val command: String, val description: String) {
     START ("start", "Начало работы с ботом"),
     RUN ("run", "Найти игру"),

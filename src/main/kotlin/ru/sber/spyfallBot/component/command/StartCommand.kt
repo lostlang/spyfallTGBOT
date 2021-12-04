@@ -10,6 +10,7 @@ import ru.sber.spyfallBot.command.CommandMessage
 import ru.sber.spyfallBot.entity.Player
 import ru.sber.spyfallBot.logic.*
 
+
 @Component
 class StartCommand: AbstractCommand(CommandInfo.START) {
 

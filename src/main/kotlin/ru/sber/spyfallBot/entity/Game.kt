@@ -3,6 +3,7 @@ package ru.sber.spyfallBot.entity
 import java.time.LocalDateTime
 import javax.persistence.*
 
+
 @Entity
 @Table(name = "games")
 data class Game (

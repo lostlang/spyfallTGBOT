@@ -9,6 +9,7 @@ import ru.sber.spyfallBot.event.CommandEvent
 import ru.sber.spyfallBot.logic.textToCommand
 import ru.sber.spyfallBot.logic.useCommandClass
 
+
 @Service
 class RedirectService(
     private val applicationEventPublisher: ApplicationEventPublisher,

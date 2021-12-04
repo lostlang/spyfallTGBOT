@@ -2,6 +2,7 @@ package ru.sber.spyfallBot.entity
 
 import javax.persistence.*
 
+
 @Entity
 @Table(name = "games")
 data class Location (

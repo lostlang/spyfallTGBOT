@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository
 import ru.sber.spyfallBot.entity.Player
 import java.util.*
 
+
 @Repository
 interface PlayerRepository: JpaRepository<Player, Long> {
     fun findByTelegramId(id: Long): Optional<Player>

@@ -8,6 +8,7 @@ import ru.sber.spyfallBot.command.AbstractCommand
 import ru.sber.spyfallBot.command.CommandInfo
 import ru.sber.spyfallBot.command.CommandMessage
 
+
 @Component
 class HelpCommand: AbstractCommand(CommandInfo.HELP) {
     override fun getMessage(args: List<String>): String {

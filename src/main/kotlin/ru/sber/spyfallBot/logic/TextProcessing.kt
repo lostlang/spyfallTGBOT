@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton
 import ru.sber.spyfallBot.command.CommandInfo
 
+
 fun simpleTextMessage(chatId: Long, text: List<out String>): MutableList<SendMessage> {
     val messages: MutableList<SendMessage> = mutableListOf()
     text.forEach { message ->

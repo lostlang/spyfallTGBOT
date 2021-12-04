@@ -10,6 +10,7 @@ import ru.sber.spyfallBot.logic.*
 import ru.sber.spyfallBot.services.RedirectService
 import javax.annotation.PostConstruct
 
+
 @Component
 class Bot (
     private val botProperties: BotProperties,

@@ -6,6 +6,7 @@ import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand
 import ru.sber.spyfallBot.event.CommandEvent
 import ru.sber.spyfallBot.repository.*
 
+
 abstract class AbstractCommand (
     private val command: CommandInfo
 ): BotCommand(command.command, command.description) {
