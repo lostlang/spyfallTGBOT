@@ -4,7 +4,7 @@ import javax.persistence.*
 
 
 @Entity
-@Table(name = "games")
+@Table(name = "locations")
 data class Location (
     @Id
     @GeneratedValue

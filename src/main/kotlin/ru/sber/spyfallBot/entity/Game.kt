@@ -11,20 +11,20 @@ data class Game (
     @GeneratedValue
     val id: Long? = null,
 
-    @Column(name = "time_start")
+    @Column
     val timeStart: LocalDateTime = LocalDateTime.now(),
 
-    @Column(name = "time_for_play")
+    @Column
     val timeForPlay: Long? = null,
 
-    @Column(name = "time_previous_step")
+    @Column
     var timePreviousStep: LocalDateTime = LocalDateTime.now(),
 
     @OneToOne
     val spy: Player? = null,
 
     @OneToOne
-    var location: Location? = null,
+    var currentLocation: Location? = null,
 
     @OneToMany(fetch = FetchType.EAGER)
     val players: MutableList<Player> = mutableListOf(),

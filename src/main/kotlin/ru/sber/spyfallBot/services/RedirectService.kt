@@ -26,26 +26,20 @@ class RedirectService(
 
     private fun callbackExecute(callbackQuery: CallbackQuery) {
         val command = textToCommand(callbackQuery.data) ?: return
-        val commandArguments = callbackQuery.data.split(" ")
+        var commandArguments = callbackQuery.data.split(" ")
+        commandArguments = commandArguments.subList(1, commandArguments.size)
 
+        if (commandArguments.isNotEmpty() && command == CommandInfo.CREATE) {
 
-        when (command) {
-            CommandInfo.CREATE -> {
-                if (commandArguments.isNotEmpty()) {
-
-                }
-            }
-            else -> {
-                applicationEventPublisher.publishEvent(
-                    SendCommandEvent(
-                        callbackQuery.from.id,
-                        command,
-                        useCommandClass(command, commandArguments.subList(1, commandArguments.size))
-                    )
+        } else {
+            applicationEventPublisher.publishEvent(
+                SendCommandEvent(
+                    callbackQuery.from.id,
+                    command,
+                    useCommandClass(callbackQuery.from.id, command, commandArguments)
                 )
-            }
+            )
         }
-
     }
 
     private fun messageExecute(message: Message) {

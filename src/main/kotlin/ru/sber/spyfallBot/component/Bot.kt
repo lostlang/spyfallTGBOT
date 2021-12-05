@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.IBotCommand
 import org.telegram.telegrambots.meta.api.objects.Update
-import ru.sber.spyfallBot.command.CommandInfo
 import ru.sber.spyfallBot.command.CommandMessage
 import ru.sber.spyfallBot.logic.*
 import ru.sber.spyfallBot.services.RedirectService

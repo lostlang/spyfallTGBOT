@@ -10,10 +10,10 @@ data class Player (
     @GeneratedValue
     val id: Long? = null,
 
-    @Column(name = "telegram_id")
+    @Column
     val telegramId: Long? = null,
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER )
     var playerAlias: Alias? = null,
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -14,14 +14,10 @@ import ru.sber.spyfallBot.logic.*
 @Component
 class StartCommand: AbstractCommand(CommandInfo.START) {
 
-    override fun getMessage(args: List<String>): String {
-        val userId = args!![0].toLong()
-        val userFirstName = args[1]
-        val userLastName = args[2]
-
+    fun getMessage(userId: Long, userFirstName: String, userLastName: String): String {
         val outText: String
 
-        if (!playerRepository.findByTelegramId(userId).isPresent) {
+        if (playerRepository.findByTelegramId(userId) == null) {
             outText = formatMessage(CommandMessage.START.text,
                 arrayOf(userFirstName, userLastName)
             )
@@ -39,10 +35,10 @@ class StartCommand: AbstractCommand(CommandInfo.START) {
     override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
          sendEvent(chat.id, listOf(
              getMessage(
-                 listOf(user.id.toString(),
-                     user.firstName,
-                     user.lastName)
-             ))
+                 user.id,
+                 user.firstName,
+                 user.lastName)
+             )
          )
     }
 }

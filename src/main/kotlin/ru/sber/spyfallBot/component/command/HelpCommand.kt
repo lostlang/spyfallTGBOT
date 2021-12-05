@@ -11,11 +11,11 @@ import ru.sber.spyfallBot.command.CommandMessage
 
 @Component
 class HelpCommand: AbstractCommand(CommandInfo.HELP) {
-    override fun getMessage(args: List<String>): String {
+    fun getMessage(): String {
         return CommandMessage.HELP.text
     }
 
     override fun execute(absSender: AbsSender, user: User, chat: Chat, arguments: Array<out String>) {
-        sendEvent(chat.id, listOf(getMessage(arguments.toList())))
+        sendEvent(chat.id, listOf(getMessage()))
     }
 }

@@ -20,8 +20,6 @@ abstract class AbstractCommand (
     @Autowired
     lateinit var aliasRepository: AliasRepository
 
-    abstract fun getMessage(args: List<String>): String
-
     fun sendEvent(chatId: Long, arguments: List<out String>){
         applicationEventPublisher.publishEvent(
             SendCommandEvent(chatId, command, arguments)
