@@ -3,7 +3,7 @@ package ru.sber.spyfallBot.command
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationEventPublisher
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand
-import ru.sber.spyfallBot.event.CommandEvent
+import ru.sber.spyfallBot.event.SendCommandEvent
 import ru.sber.spyfallBot.repository.*
 
 
@@ -24,7 +24,7 @@ abstract class AbstractCommand (
 
     fun sendEvent(chatId: Long, arguments: List<out String>){
         applicationEventPublisher.publishEvent(
-            CommandEvent(chatId, command, arguments)
+            SendCommandEvent(chatId, command, arguments)
         )
     }
 }
