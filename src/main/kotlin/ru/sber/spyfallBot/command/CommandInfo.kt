@@ -6,5 +6,6 @@ enum class CommandInfo(val command: String, val description: String) {
     RUN ("run", "Найти игру"),
     JOIN ("join", "Подключится к игре"),
     LEAVE ("leave", "Покинуть игру"),
-    HELP ("help", "Как играть")
+    HELP ("help", "Как играть"),
+    CREATE("create", "Создать игру")
 }
